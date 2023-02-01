@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/css/style.css'>
+</head>
+<body>
+    
+     <!--Para mostrarmos as variáveis passadas no render devemos fazer assim-->
+    <p>Nome: <%= nome %> </p>
+    <p>Linguagem favorita: <%= lang %></p>
+
+    <!--Quando não queremos mostrar a variável, mas sim fazer lógica, não precisamos do = -->
+    <% if(msg == true){ %>
+        
+            <H1>ERRO</H1>
+    
+    <% } else { %>
+
+            <H1>TUDO CERTO!</H1>
+  
+    <% } %>
+
+
+
+
+
+
+
+
+</body>
+</html>
