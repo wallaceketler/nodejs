@@ -9,3 +9,7 @@
   - a resposta de uma requisição feita em determinada rota do servidor deve ser feita apenas uma vez, caso contrário teremos um erro
   - Para que o servidor seja atualizado depois de uma alteração nos códigos sem precisarmos reiniciá-lo, devemos usar npm install nodemon -g para instalar o nodemon e ao iniciar o arquivo principal devemos usar nodemon + nome arquivo ao invés de node + nove do arquivo
   - Existem, além dos parâmetros de rota, os query params, que são inseridos de forma opcional pelo usuário e podem ser resgatadas em código
+  - Quando usamos o método GET em um formulário html puro, os dados, inclusive senhas vão por query params, o que não é bom, o ideal é usar POST, assim como no axios
+  - Para receber os dados de uma requisição POST no backend devemos instalar o body parser com npm install body-parser --save
+  - Para que isso seja possível, campos de input HTML devem ter name
+  - Para salvar os dados do backend no banco de dados SQL, devemos instalar o sequelize com npm install --save sequelize e npm install --save mysql2, pois assim conseguimos alterar o banco de dados com javascript
