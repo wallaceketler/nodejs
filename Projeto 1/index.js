@@ -1,14 +1,16 @@
 const express = require("express"); //importa express
 const bodyParser = require("body-parser")  // importa body parser
 const connection = require("./database/database") //importa módulo de conexão criado
+const perguntaModel = require("./database/Pergunta") //importa Model de pergunta
 const app = express();              //inicializa o express
 
 //DATABASE
-connection.authenticate().then(()=>{
-    console.log("Conexão feita com sucesso!").catch((msgErro)=>{
+connection.authenticate()
+    .then(()=>{
+    console.log("Conexão feita com sucesso!")})
+    .catch((msgErro)=>{
         console.log(msgErro)
     })
-})
 
 
 //DEFINIÇÕES
