@@ -56,6 +56,17 @@ app.post("/salvarpergunta", (req,res) =>{
     //res.send("Formulário recebido!" + titulo + descricao)
 })
 
+app.post("/responder", (req,res)=>{
+    var corpo = req.body.corpo
+    var perguntaId = req.body.pergunta
+    respostaModel.create({
+        corpo: corpo,
+        perguntaId: perguntaId
+    }).then(()=>{
+        res.redirect("/pergunta/"+perguntaId)
+    })
+})
+
 app.get("/pergunta/:id", (req,res)=>{
 
     var id = req.params.id
@@ -64,9 +75,22 @@ app.get("/pergunta/:id", (req,res)=>{
         where: {id : id}
     }).then((pergunta)=>{
         if(pergunta != undefined){
-            res.render("pergunta",{
-                pergunta: pergunta
+           
+            respostaModel.findAll({
+                where: {perguntaId: pergunta.id},
+                order:[
+                    ['id', 'DESC'] 
+                ]
+            }).then((respostas)=>{
+                res.render("pergunta",{
+                    pergunta:pergunta,
+                    respostas: respostas
+                })
             })
+
+
+
+
         }else{
             res.redirect("/")
         }
