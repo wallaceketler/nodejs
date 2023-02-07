@@ -2,6 +2,7 @@ const express = require("express"); //importa express
 const bodyParser = require("body-parser")  // importa body parser
 const connection = require("./database/database") //importa módulo de conexão criado
 const perguntaModel = require("./database/Pergunta") //importa Model de pergunta
+const respostaModel = require("./database/Resposta") //importa Model de resposta
 const app = express();              //inicializa o express
 
 //DATABASE
@@ -11,7 +12,6 @@ connection.authenticate()
     .catch((msgErro)=>{
         console.log(msgErro)
     })
-
 
 //DEFINIÇÕES
 //dizendo para express usar EJS como view engine
@@ -26,9 +26,13 @@ app.use(bodyParser.json())
 //ao usar o render ele já olha para o diretório views por padrão
 app.get('/', (req,res) => {
 
-   
-    res.render("index",{})
-
+    perguntaModel.findAll({raw: true, order:[['id', 'DESC']]}).then((Perguntas)=>{
+        console.log(Perguntas)
+        res.render("index",{
+            perguntas: Perguntas
+        })
+    }) //= SELECT * FROM Perguntas
+    
 })
 
 app.get("/perguntar", (req, res) =>{
@@ -42,7 +46,31 @@ app.post("/salvarpergunta", (req,res) =>{
     var titulo = req.body.titulo
     var descricao = req.body.descricao
 
-    res.send("Formulário recebido!" + titulo + descricao)
+    perguntaModel.create({ // = INSERT INTO Perguntas
+        titulo: titulo,
+        descricao: descricao
+    }).then(()=>{
+        res.redirect("/")
+    })  
+
+    //res.send("Formulário recebido!" + titulo + descricao)
+})
+
+app.get("/pergunta/:id", (req,res)=>{
+
+    var id = req.params.id
+
+    perguntaModel.findOne({
+        where: {id : id}
+    }).then((pergunta)=>{
+        if(pergunta != undefined){
+            res.render("pergunta",{
+                pergunta: pergunta
+            })
+        }else{
+            res.redirect("/")
+        }
+    })
 })
 
 //inicia o servidor na porta desejada

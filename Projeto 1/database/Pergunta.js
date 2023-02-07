@@ -18,3 +18,5 @@ const Pergunta = connection.define('perguntas',{
 //sincroniza e atualiza a base de dados
 //com o force como false ele não cria se já existir uma tabela com esse nome
 Pergunta.sync({force: false}).then(()=>{})
+
+module.exports = Pergunta
