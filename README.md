@@ -13,3 +13,15 @@
   - Para receber os dados de uma requisição POST no backend devemos instalar o body parser com npm install body-parser --save
   - Para que isso seja possível, campos de input HTML devem ter name
   - Para salvar os dados do backend no banco de dados SQL, devemos instalar o sequelize com npm install --save sequelize e npm install --save mysql2, pois assim conseguimos alterar o banco de dados com javascript
+  - Um VPS (Virtual Private Server) é um computador que você pode alugar para ter controle sobre ele e rodar coisas nele
+  - Hospedagem compartilhada é quando temos diferentes usuários utilizando o mesmo computador, sem liberdade de controlar o que instalar
+  - Para fazer deploy(postagem) de uma aplicação, existem diversos sites que fornecem serviços, como a digital ocean para VPS
+  - Para o deploy é recomendado uma chave SSH para acesso, que pode ser gerada pelo OpenSSH no linux ou com o Putty
+  - A chave SSH é dividida em pública e privada, analogamente a um cadeado e a chave do cadeado, respectivamente
+  - Ao ter acesso ao nosso servidor, devemos enviar os arquivos da aplicação por meio de algum método, como com o aplicativo filezilla
+  - A transferência ocorre por meio do protocolo SFTP (SSH File Transfer Protocol)
+  - Devemos enviar todas as pastas da aplicação Node, exceto a node_modules, uma vez que os módulos instalados em determinado sistema muitas vezes não roda em outro e vice versa, portanto, depois de enviar os dados, deve-se usar o comando npm intall, que instala todos módulos usados no projeto de uma só vez graças ao arquivo package.json
+  - Ao fazer deploy da aplicação, devemos conseguir acessar o site pela IP:porta
+  - Caso queiramos acessar sem falar a porta, devemos definir a porta como 80, pois é o padrão para web
+  - Para que a aplicação fique rodando em background de modo que ela fique online e disponível mesmo se o terminal fechasse, devemos instalar no sistema o pm2 com npm install -g pm2 ou no linux sudo npm install -g pm2
+  - Ao iniciar a aplicação, ao invés de usarmos o node index.js, usaremos pm2 start index.js
