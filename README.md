@@ -25,3 +25,7 @@
   - Caso queiramos acessar sem falar a porta, devemos definir a porta como 80, pois é o padrão para web
   - Para que a aplicação fique rodando em background de modo que ela fique online e disponível mesmo se o terminal fechasse, devemos instalar no sistema o pm2 com npm install -g pm2 ou no linux sudo npm install -g pm2
   - Ao iniciar a aplicação, ao invés de usarmos o node index.js, usaremos pm2 start index.js
+  - Em um banco de dados relacional como o MySQL, existem 3 tipos de relacionamentos:
+    * 1 para 1 (como cada atividade possui uma aula)
+    * 1 para N (como cada vendedor pode ter vários clientes)
+    * N para N (como cada nota fiscal pode ser de vários produtos ao mesmo tempo e cada produto pode estar em várias notas fiscais ao mesmo tempo)
