@@ -29,3 +29,4 @@
     * 1 para 1 (como cada atividade possui uma aula)
     * 1 para N (como cada vendedor pode ter vários clientes)
     * N para N (como cada nota fiscal pode ser de vários produtos ao mesmo tempo e cada produto pode estar em várias notas fiscais ao mesmo tempo)
+  - Usamos relacionamentos na aplicação por performance, pois quando temos relação entre duas tabelas, ao fazermos uma consulta, ocorre JOIN entre elas e não precisamos fazer duas ou mais consultas desnecessárias

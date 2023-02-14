@@ -1,9 +1,13 @@
 const express = require("express")
 const app = express()
-const bodyParser = require("body-parser")
+const bodyParser = require('body-parser')
 const connection = require('./database/database')
+//importa controllers
 const categoriesController = require("./categories/CategoriesController")
 const articlesController = require("./articles/ArticlesController")
+//importa models
+const Article = require("./articles/Article")
+const Category = require("./categories/Category")
 
 //view engine
 app.set('view engine', 'ejs')
@@ -11,8 +15,13 @@ app.set('view engine', 'ejs')
 //arquivos estáticos
 app.use(express.static("public"))
 
-//database
 
+//body parser
+//TEM QUE VIR AQUI!
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
+
+//database
 connection.authenticate()
     .then(()=>{ console.log("conexão com base ok")})
     .catch((error)=>{console.log(error)})
@@ -20,9 +29,7 @@ connection.authenticate()
 app.use("/", categoriesController) //dizendo que quero usar rotas do arquivo, cabe prefixo
 app.use("/", articlesController)
 
-//body parser
-app.use(bodyParser.urlencoded({extended:false}))
-app.use(bodyParser.json())
+
 
 
 //rotas
