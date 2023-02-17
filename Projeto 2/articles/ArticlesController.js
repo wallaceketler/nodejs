@@ -38,8 +38,27 @@ router.post("/articles/save", (req,res)=>{
         //o categoryID é chave estrangeira do model Category e serve para criar relacionamento
         categoryId: category
     }).then(()=>{
-        res.redirect("admin/articles")
+        res.redirect("/admin/articles")
     })
+})
+
+router.post("/articles/delete", (req,res)=>{
+    var id = req.body.id;
+    if(id != undefined){
+        if(!isNaN(id)){
+            Article.destroy({
+                where:{
+                    id:id
+                }
+            }).then(()=>{
+                res.redirect("/admin/articles")
+            })
+        }else{//NÃO FOR NÚMERO
+            res.redirect("/admin/articles")
+        }
+    }else{ //UNDEFINED
+        res.redirect("/admin/articles")
+    }
 })
 
 

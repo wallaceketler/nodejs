@@ -19,12 +19,20 @@
         </thead>
         <tbody>
             <% articles.forEach((article)=>{ %>
+                <tr>
+                    <td><%=article.id%></td>
+                    <td><%=article.title%></td>
+                    <td><%=article.slug%></td>
+                    <td><%=article.category.title%></td>
+                    <td>
 
-                <td><%=article.id%></td>
-                <td><%=article.title%></td>
-                <td><%=article.slug%></td>
-                <td><%=article.category.title%></td>
-                <td>Ações</td>
+                        <form method="post" action="/articles/delete" style="display: inline;" onsubmit="confirmDelete(event, this)">
+                            <input type="hidden" name="id" value="<%=article.id%>">
+                            <button class="btn btn-danger">Apagar</button>
+                        </form>
+
+                    </td>
+                </tr>
                 
                 
             <% }) %>
@@ -35,7 +43,7 @@
 <script>
     function confirmDelete(event, form){
         event.preventDefault()
-        var decision = confirm("Deseja mesmo deletar esta categoria?")
+        var decision = confirm("Deseja mesmo deletar este artigo?")
         if(decision){
             form.submit()
         }
