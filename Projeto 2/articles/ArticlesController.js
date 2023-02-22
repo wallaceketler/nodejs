@@ -4,12 +4,14 @@ const { default: slugify } = require("slugify")
 const router = express.Router() //permite trabalharmos com rotas fora do index.js
 const Category = require("../categories/Category")//importa Model de categorias
 const Article = require("./Article")
+const adminAuth = require("../middlewares/adminAuth")//middleware de auth rota privada
 
 router.get("/articles", (req,res)=>{
     res.send("ROTA DE ARTIGOS")
 })
 
-router.get("/admin/articles",(req,res)=>{
+//quando coloco adminAuth essa rota só pode ser acessada com sessão
+router.get("/admin/articles", adminAuth, (req,res)=>{
     Article.findAll({
         //faz join com a tabela category e puxa dados dela também
         include: [{model: Category}]
@@ -19,7 +21,7 @@ router.get("/admin/articles",(req,res)=>{
     
 })
 
-router.get("/admin/articles/new", (req,res)=>{
+router.get("/admin/articles/new", adminAuth, (req,res)=>{
     Category.findAll().then((categories)=>{
         res.render("admin/articles/new",{categories:categories})
     })
@@ -62,7 +64,7 @@ router.post("/articles/delete", (req,res)=>{
 })
 
 //responsável por ir para tela de edição de determinado artigo
-router.get("/admin/articles/edit/:id",(req,res)=>{
+router.get("/admin/articles/edit/:id", adminAuth, (req,res)=>{
     
     var id = req.params.id
 

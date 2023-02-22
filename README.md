@@ -36,3 +36,5 @@
   - Cookies são arquivos de texto que guardam informações temporárias no browser
   - Sessões usam cookies para falar que aquele usuário tem dados salvos, mas guardam as informações no servidor (mais seguro e pode guardar mais coisas)
   - Com npm install --save express-session instalamos ferramentas para usar sessions
+  - Podemos salvar uma session por meio de uma rota no node com o express session, mas para aplicações de larga escala, deve-se usar redis para evitar estouros de memória
+  - Sessões são encerradas quando o tempo expira e quando servidor cai

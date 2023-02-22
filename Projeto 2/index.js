@@ -18,8 +18,8 @@ app.set('view engine', 'ejs')
 
 //sessions
 app.use(session({
-    //max age determina o tempo de duração da sessão (login, por exemplo)
-    secret: "algoaleatorioparasegunraça", cookie: { maxAge: 30000 } 
+    //max age determina o tempo de duração da sessão (login, por exemplo) em milisegundos
+    secret: "algoaleatorioparasegunraça", cookie: { maxAge: 3000000 } 
 }))
 
 //arquivos estáticos
@@ -39,6 +39,8 @@ connection.authenticate()
 app.use("/", categoriesController) //dizendo que quero usar rotas do arquivo, cabe prefixo
 app.use("/", articlesController)
 app.use("/", usersController)
+
+
 
 
 //rotas
