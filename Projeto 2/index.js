@@ -1,16 +1,26 @@
+//coisas úteis
 const express = require("express")
 const app = express()
 const bodyParser = require('body-parser')
 const connection = require('./database/database')
+const session = require("express-session")
 //importa controllers
 const categoriesController = require("./categories/CategoriesController")
 const articlesController = require("./articles/ArticlesController")
+const usersController = require("./user/usersController")
 //importa models
 const Article = require("./articles/Article")
 const Category = require("./categories/Category")
+const User = require("./user/User")
 
 //view engine
 app.set('view engine', 'ejs')
+
+//sessions
+app.use(session({
+    //max age determina o tempo de duração da sessão (login, por exemplo)
+    secret: "algoaleatorioparasegunraça", cookie: { maxAge: 30000 } 
+}))
 
 //arquivos estáticos
 app.use(express.static("public"))
@@ -28,6 +38,7 @@ connection.authenticate()
 
 app.use("/", categoriesController) //dizendo que quero usar rotas do arquivo, cabe prefixo
 app.use("/", articlesController)
+app.use("/", usersController)
 
 
 //rotas
@@ -36,7 +47,7 @@ app.get("/", (req, res) =>{
     Article.findAll({
         order: [
             ["id", "DESC"]
-        ]
+        ], limit:4
     }).then((articles)=>{
 
         Category.findAll().then((categories)=>{
@@ -56,7 +67,7 @@ app.get("/:slug",(req,res)=>{
     }).then((article)=>{
         if(article != undefined){
             Category.findAll().then((categories)=>{
-                res.render("article", {article: articles, categories: categories})
+                res.render("article", {article: article, categories: categories})
             })
         }else{
             res.redirect("/")

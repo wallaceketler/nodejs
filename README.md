@@ -30,3 +30,9 @@
     * 1 para N (como cada vendedor pode ter vários clientes)
     * N para N (como cada nota fiscal pode ser de vários produtos ao mesmo tempo e cada produto pode estar em várias notas fiscais ao mesmo tempo)
   - Usamos relacionamentos na aplicação por performance, pois quando temos relação entre duas tabelas, ao fazermos uma consulta, ocorre JOIN entre elas e não precisamos fazer duas ou mais consultas desnecessárias
+  - NÃO SE DEVE SALVAR A SENHA DE USUÁRIOS DE FORMA PLANA NO BANCO DE DADOS
+  - DEVE-SE ENCRIPTAR OU USAR HASH, preferencialmente a segunda opção, pois há como fazer a criptografia reversa e na hash não
+  - Com npm install --save bcryptjs instalamos ferramenta para has no projeto
+  - Cookies são arquivos de texto que guardam informações temporárias no browser
+  - Sessões usam cookies para falar que aquele usuário tem dados salvos, mas guardam as informações no servidor (mais seguro e pode guardar mais coisas)
+  - Com npm install --save express-session instalamos ferramentas para usar sessions
