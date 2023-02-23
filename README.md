@@ -38,3 +38,19 @@
   - Com npm install --save express-session instalamos ferramentas para usar sessions
   - Podemos salvar uma session por meio de uma rota no node com o express session, mas para aplicações de larga escala, deve-se usar redis para evitar estouros de memória
   - Sessões são encerradas quando o tempo expira e quando servidor cai
+
+  # ECMA JS
+    - const -> não pode ser alterado, uma vez declarado
+    - let -> escopos global, local e de bloco (qualquer coisa entre {})
+    - var -> escopos global e local apenas (se criar dentro de função só funciona ali, fora temos acesso em qualquer lugar)
+    - parâmetros opcionais -> func(a,b,c = 10){} //guardam valor e devem vir por último
+    - json encurtado -> ao invés de fazermos var user = { nome : nome, idade: idade }, fazer var user = { nome, idade } basta, de modo que um json com atributos nome e idade serão criados e serão puxadas as informações dessas variáveis declaradas previamente
+    - operador spread -> dado um json do tipo var empresa = { site: "X", nome: "Y" }, caso queiramos copiar cada um dos atributos desse json em outro json de forma separada, ao invés de escrever var user = { nome, idade, empresa: empresa.nome, site: empresa.site }, basta escrever var user = { nome, idade, ...empresa }. OBS: CASO QUEIRAMOS QUE FIQUE COMO JSON, podemos simplesmente passar como var user = { nome, idade, empresa }
+    - desestruturação -> var {nome} = user significa que estamos criando uma variável nome com conteúdo do atributo nome do objeto user, o mesmo que var nome = user.nome
+    - arrow function -> forma reduzida de escrever função ()=>{}. Só pode ser usada como callback ou como declaração depois de igual var func = (a,b,c) => {}. Quando temos apenas um parâmetro podemos não usar os parênteses var func = a => {} ou a => {}. Quando temos apenas uma linha, não precisamos escrever chaves nem do return, ele acontece automaticamente, diferente dos outros formatos que escolhemos ter ou não return
+    - Find -> acha um único registro em um array, exemplo: var usuario = users.find(user => user.nome == "X"), fará com que a var usuario contenha o objeto com esse nome
+    - Template Literals -> ao invés de usarmos concatenação de strings, usamos a interpolação em crases, exemplo: `olá meu nome é ${nome}`, muito usado no react
+  
+  # Programação assíncrona
+    - Programação síncrona: cada processo espera o anterior acabar para ser executado
+    - 
