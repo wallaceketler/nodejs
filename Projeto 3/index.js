@@ -16,3 +16,24 @@ fs.writeFile("./teste.txt","NOVO TEXTO", (erro)=>{
         console.log("Não deu para escrever")
     }
 })
+
+//leitura de JSON, alteração e transformação em string de novo
+
+fs.readFile("./usuario.json", {encoding: "utf-8"},(erro,dados)=>{
+    if(erro){
+        console.log(erro)
+    }else{
+        var conteudo = JSON.parse(dados)
+
+        conteudo.nome = "alteração"
+        conteudo.curso = "alteração2"
+
+        fs.writeFile("./usuario.json",JSON.stringify(conteudo),(erro)=>{
+            if(erro){
+                console.log(erro)
+            }
+        })
+
+        console.log(conteudo)
+    }
+})
