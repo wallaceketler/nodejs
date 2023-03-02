@@ -19,6 +19,10 @@ fs.writeFile("./teste.txt","NOVO TEXTO", (erro)=>{
 
 //leitura de JSON, alteração e transformação em string de novo
 
+//readFile é uma função assíncrona por natureza 
+//mas ela é mais antiga que o conceito de promises, logo, funciona com callback
+//isso imposibilita o retorno
+
 fs.readFile("./usuario.json", {encoding: "utf-8"},(erro,dados)=>{
     if(erro){
         console.log(erro)
