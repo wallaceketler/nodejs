@@ -6,7 +6,7 @@ var reader = new Reader()
 async function main(){
     var data = await reader.Read("./arquivo.csv")
     Processor.Process(data)
-    console.log(data)
+    
 }
 
 main()
