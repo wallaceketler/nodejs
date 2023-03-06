@@ -138,3 +138,18 @@
     }
 
   ~~~~
+
+  # API
+
+   - API: Software que permite uma coisa se comunique com outra, interface de comunicação
+   - Verbos HTTP (camada de aplicação do modelo OSI): get, post, put, patch, delete
+   - Webservices: uma API que funciona na web por meio do protocolo HTTP
+   - REST: padrão adotado para que API's funcionem em geral, possui 5 demandas:
+      * Cliente-servidor, não pode renderizar html como padrão MVC por exemplo
+      * Stateless: não guarda dados de quem fez requisição
+      * Cacheável
+      * Saber trabalhar com camadas: Não importa o que tenha entre quem requisita e quem responde (middlewares, firewalls, proxies), a API tem que saber trabalhar normalmente
+      * Interface uniforme e direta: Rotas devem ser adequadas. Não se deve usar "deletar", "editar" na rota, isso é papel dos verbos HTTP, por exemplo: http://meusite.com/cliente/1, se eu usar o delete ele vai deletar o cliente de ID 1, se eu usar o put ele vai atualizar o cliente de id 1
+    - Quando a API respeita todas as 5 demandas ela é RESTful. Deve-se, também, evitar rotas que servem para muitas coisas, deve-se particionar, usar os métodos corretos.
+    - Hateoas: retornar, de uma requisição, além dos dados pedidos, como também uma tabela de links com as utilidades daquilo que você pediu.Ex) você pediu um usuário, vem os dados dele e uma lista de links com utilidades como: deletar, seguir, editar, etc.
+    - O padrão SOAP retorna apenas XML, o REST retorna JSON, XML, arquivos etc.
