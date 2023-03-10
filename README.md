@@ -153,3 +153,9 @@
     - Quando a API respeita todas as 5 demandas ela é RESTful. Deve-se, também, evitar rotas que servem para muitas coisas, deve-se particionar, usar os métodos corretos.
     - Hateoas: retornar, de uma requisição, além dos dados pedidos, como também uma tabela de links com as utilidades daquilo que você pediu.Ex) você pediu um usuário, vem os dados dele e uma lista de links com utilidades como: deletar, seguir, editar, etc.
     - O padrão SOAP retorna apenas XML, o REST retorna JSON, XML, arquivos etc.
+
+  # JWT
+
+    - Sigla para JSON Web Token, uma forma de se fazer autenticação de API's, para que tenhamos controle sobre quem pode acessar certas rotas de requisição. (Exemplo seria o caso do cadastro de algum produto sem o usuário estar logado no sistema ainda)
+    - Em geral, quando alguém loga em um sistema, são gerados cookies de sessão, mas nem todo sistema é web, existem sistemas mobile, ou outras API's que fazem requisições da nossa API, então deve-se generalizar e utilizar JWT
+    - Com o JWT, a requisição deve ser feita juntamente do token gerado para aquele usuário
