@@ -153,6 +153,7 @@
     - Quando a API respeita todas as 5 demandas ela é RESTful. Deve-se, também, evitar rotas que servem para muitas coisas, deve-se particionar, usar os métodos corretos.
     - Hateoas: retornar, de uma requisição, além dos dados pedidos, como também uma tabela de links com as utilidades daquilo que você pediu.Ex) você pediu um usuário, vem os dados dele e uma lista de links com utilidades como: deletar, seguir, editar, etc.
     - O padrão SOAP retorna apenas XML, o REST retorna JSON, XML, arquivos etc.
+  - Deve-se verificar que tipo de código retornar antes de fazer isso
 
   # JWT
 
