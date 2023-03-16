@@ -51,14 +51,14 @@
 
         
         var email =  emailField.value
-        var passowrd =  passwordField.value
+        var password =  passwordField.value
         
 
         axios.post("http://localhost:8080/auth",{email, password}).then((response)=>{
             alert("Logado")
-            var token = res.data.token
+            var token = response.data.token
             localStorage.setItem("token", token)
-            axios.config.hedaers.Authorization = "Bearer " + localStorage.setItem("token",token)
+            axiosConfig.headers.Authorization = "Bearer " + localStorage.getItem("token",token)
         }).catch((error)=>{
             alert("Login Incorreto")
         })
@@ -142,7 +142,8 @@
 
 
     axios.get("http://localhost:8080/games", axiosConfig).then((response)=>{
-        var games = response.data
+        console.log(response.data)
+        var games = response.data.games
         var list = document.getElementById("games")
 
         games.forEach((game)=>{

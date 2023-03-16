@@ -160,3 +160,10 @@
     - Sigla para JSON Web Token, uma forma de se fazer autenticação de API's, para que tenhamos controle sobre quem pode acessar certas rotas de requisição. (Exemplo seria o caso do cadastro de algum produto sem o usuário estar logado no sistema ainda)
     - Em geral, quando alguém loga em um sistema, são gerados cookies de sessão, mas nem todo sistema é web, existem sistemas mobile, ou outras API's que fazem requisições da nossa API, então deve-se generalizar e utilizar JWT
     - Com o JWT, a requisição deve ser feita juntamente do token gerado para aquele usuário
+  
+  # HATEOAS
+    
+    - Último passo para tornar API Restful
+    - Linka recursos dentro de outros como links dentro de uma página acessada por um link
+    - Ao fazermos uma requisição, além de retornar os dados pedidos, retorna todos as rotas que podem ser úteis relacionados àquela requisição
+    - Salvamos uma lista de links da API no código, como uma variável, de modo que se alterarmos o estilo da requisição, não teremos problemas.
