@@ -167,3 +167,14 @@
 - Linka recursos dentro de outros como links dentro de uma página acessada por um link
 - Ao fazermos uma requisição, além de retornar os dados pedidos, retorna todos as rotas que podem ser úteis relacionados àquela requisição
 - Salvamos uma lista de links da API no código, como uma variável, de modo que se alterarmos o estilo da requisição, não teremos problemas.
+
+  # KNEX JS
+
+- Biblioteca para manipular banco de dados SQL no Node (query builder)
+- Existem diferentes abordagens para trabalhar com SQL no Node:
+  - A abordagem crua: "SELECT * FROM post"
+  - A abordagem ORM(sequelize) Models: Artigos.create({title: "algum titulo"})
+  - A abordagem Query Builder(knex) -> banco.select().table("post") gera "SELECT * from post" ou banco.select().where({id: 7}).orWhere({title: "JS"}).orderBy("title").table("post") gera "SELECT * FROM post WHERE id  = 7 OR title = "JS" ORDER_BY title
+- Verifique documentação
+- Lá descreve que, além de dar npm install knex --save, devemos instalar também a bibilioteca para cada tecnologia usada, por exemplo, mysql, oracledb etc
+- Ao trabalhar com Knex, é necessário usar programas como HeidiSQL para criarmos as tabelas e colunas
